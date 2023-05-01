@@ -23,8 +23,6 @@ services:
             KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
             KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
             KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
-            KAFKA_ADVERTISED_HOST_NAME: kafka
-            KAFKA_ADVERTISED_PORT: 9092
             KAFKA_CREATE_TOPICS: "inventory_updates:1:1"
         working_dir: /data
         volumes:
@@ -37,6 +35,7 @@ services:
             ZOOKEEPER_CLIENT_PORT: 32181
             ZOOKEEPER_TICK_TIME: 2000
     app:
+        container_name: nuuly-assessment-api
         build: .
         ports:
             - "8080:8080"
