@@ -10,7 +10,7 @@
 *.ctxt
 
 # Package Files #
-*.jar
+lib
 *.war
 *.nar
 *.ear
