@@ -1,5 +1,7 @@
 package com.nuuly;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.*;
 
 /**
  * This is our base API server to run HTTP requests against. Currently, these are set up to just return HTTP responses
@@ -20,10 +22,14 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 public class Controller {
 
-    private final Producer producer;
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final ProducerService producer;
 
     @Autowired
-    public Controller(Producer producer) {
+    private InventoryRepository inventoryRepository;
+
+    @Autowired
+    public Controller(ProducerService producer) {
         this.producer = producer;
     }
 
@@ -62,10 +68,11 @@ public class Controller {
     /**
      * From a business perspective, we want to understand what our customers like and don't like. We want to get a list
      * of favorite items ranked by how many were purchased.
+     *
      * @return A list of favorite items
      */
     @GetMapping("/favorites")
     public ResponseEntity<?> favorites() {
-        return new ResponseEntity<List<Favorites>>(OK);
+        return new ResponseEntity<>(OK);
     }
 }

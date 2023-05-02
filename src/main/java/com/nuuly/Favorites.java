@@ -3,6 +3,9 @@ package com.nuuly;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * This table tracks the item (SKU) being purchased and the number of times that item was purchased.
+ */
 @Entity
 public class Favorites {
     @Id
@@ -19,7 +22,7 @@ public class Favorites {
     @Override
     public String toString() {
         return String.format(
-                "Inventory[sku='%s', count=%d]",
+                "Favorites[sku='%s', count=%d]",
                 sku, count
         );
     }

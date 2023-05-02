@@ -3,6 +3,9 @@ package com.nuuly;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * This table tracks the item (SKU) currently in inventory and the number of items in inventory.
+ */
 @Entity
 public class Inventory {
 

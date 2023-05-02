@@ -11,7 +11,7 @@ public class ProducerConfig {
     private KafkaProducerService<String> kafkaProducerService;
 
     @Bean
-    public Producer producer() {
-        return new Producer(kafkaProducerService);
+    public ProducerService producer() {
+        return new ProducerService(kafkaProducerService);
     }
 }
